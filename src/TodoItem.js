@@ -15,13 +15,14 @@ class TodoItem extends Component {
         }
     }
 
+
     render() {
         const { title, id } = this.props.todo
         return (
             <li style={this.getStyle()}>
-                <input type='checkbox' style={checkboxStyle} />
+                <input type='checkbox' style={checkboxStyle} onClick={this.props.markComplete.bind(this, id)} />
                 {title}
-                <button style={btnStyle}>x</button>
+                <button style={btnStyle} onClick={this.props.deleteTodo.bind(this, id)}>x</button>
             </li>
         )
     }
@@ -39,7 +40,6 @@ const btnStyle = {
     border: 'none',
     borderRadius: '50%',
     float: 'right',
-    // textAlign: 'right',
     padding: '3px 6px',
     margin: '5px 10px',
     pointer: 'cursor',
